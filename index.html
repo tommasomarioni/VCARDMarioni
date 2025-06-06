@@ -4,44 +4,54 @@
   <meta charset="UTF-8" />
   <title>Scarica la vCard di Tommaso Marioni</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 2em; }
-    button { padding: 12px 24px; font-size: 18px; cursor: pointer; }
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2em;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-<h1> Contatto: Marioni Tommaso </h1>
-<p id="msg"> Caricamento ... </p>
-<div id="action"></div>
+  <h1>Contatto: Marioni Tommaso</h1>
+  <p id="msg">Caricamento ...</p>
+  <div id="action"></div>
+  <p><a href="tommaso_marioni.vcf" download>Scarica la vCard manualmente</a></p>
 
-<script>
-  function isIOS(){
-    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-  }
-  function isAndroid(){
-    return /Android/.test(navigator.userAgent);
-  }
+  <script>
+    window.onload = function () {
+      function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      }
 
-  const actionDiv = document.getElementById('action');
-  const msg = document.getElementById('msg');
+      function isAndroid() {
+        return /Android/.test(navigator.userAgent);
+      }
 
-  const vcardLink = "tommaso_marioni.vcf";
+      const actionDiv = document.getElementById('action');
+      const msg = document.getElementById('msg');
 
-  if (isIOS()){
-    msg.textContent="Sei su iOS: clicca per aggiungere la vCard.";
-    actionDiv.innerHTML = `<a href="${vcardLink}" download>
-      <button> Aggiungi ai contatti (iOS) </button>
-    </a>`;
-  } else if (isAndroid()) {
-    msg.textContent="Sei su Android: clicca per aggiungere la vCard.";
-    actionDiv.innerHTML = `<a href="${vcardLink}" download>
-      <button> Aggiungi ai contatti (Android) </button>
-    </a>`;
-  } else{
-    msg.textContent = "sistema operativo non riconosciuto. Utilizza un dispositivo " +
-            "iOS o Android per importare la vCard."
-  }
-</script>
+      const vcardLink = "tommaso_marioni.vcf";
+
+      if (isIOS()) {
+        msg.textContent = "Sei su iOS: clicca per aggiungere la vCard.";
+        actionDiv.innerHTML = `<a href="${vcardLink}" download>
+          <button>Aggiungi ai contatti (iOS)</button>
+        </a>`;
+      } else if (isAndroid()) {
+        msg.textContent = "Sei su Android: clicca per aggiungere la vCard.";
+        actionDiv.innerHTML = `<a href="${vcardLink}" download>
+          <button>Aggiungi ai contatti (Android)</button>
+        </a>`;
+      } else {
+        msg.textContent = "Sistema operativo non riconosciuto. Usa un dispositivo iOS o Android.";
+      }
+    };
+  </script>
 
 </body>
 </html>
