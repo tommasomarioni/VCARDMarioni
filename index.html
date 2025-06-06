@@ -29,16 +29,16 @@
 
   if (isIOS()){
     msg.textContent="Sei su iOS: clicca per aggiungere la vCard.";
-    actionDiv.innerHTML = <a href="${vcardLink}" download>
-      <button> Aggiungi ai contatti (iOS) </button>
-    </a>
+    actionDiv.innerHTML = `<a href="${vcardLink}" download>
+  <button> Aggiungi ai contatti (iOS) </button>
+    </a>`;
   } else if (isAndroid()) {
     msg.textContent="Sei su Android: clicca per aggiungere la vCard.";
-    actionDiv.innerHTML = <a href="${vcardLink}" download>
-    <button> Aggiungi ai contatti (Android) </button>
-    </a>
+    actionDiv.innerHTML = `<a href="${vcardLink}" download>
+      <button> Aggiungi ai contatti (Android) </button>
+    </a>`;
   } else{
-    msg.textContent = "sistema operativo non riconosciuto. Utilizza un dispositivo " +
+    msg.textContent = "Sistema operativo non riconosciuto. Utilizza un dispositivo " +
             "ios o Android per importare la vCard."
   }
 </script>
