@@ -13,45 +13,52 @@
       font-size: 18px;
       cursor: pointer;
     }
+    img{
+      width: 20%;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Contatto: Marioni Tommaso</h1>
-  <p id="msg">Caricamento ...</p>
-  <div id="action"></div>
-  <p><a href="tommaso_marioni.vcf" download>Scarica la vCard manualmente</a></p>
+<h1>Contatto: Marioni Tommaso</h1>
+<p id="msg">Caricamento ...</p>
+<img src="marioni.jpeg">
+<div id="action"></div>
+<p><a href="tommaso_marioni.vcf" download>Scarica la vCard manualmente</a></p>
 
-  <script>
-    window.onload = function () {
-      function isIOS() {
-        return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      }
+<script>
+  window.onload = function () {
+    function isIOS() {
+      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    }
 
-      function isAndroid() {
-        return /Android/.test(navigator.userAgent);
-      }
+    function isAndroid() {
+      return /Android/.test(navigator.userAgent);
+    }
 
-      const actionDiv = document.getElementById('action');
-      const msg = document.getElementById('msg');
+    const actionDiv = document.getElementById('action');
+    const msg = document.getElementById('msg');
 
-      const vcardLink = "tommaso_marioni.vcf";
+    const vcardLink = "tommaso_marioni.vcf";
 
-      if (isIOS()) {
-        msg.textContent = "Sei su iOS: clicca per aggiungere la vCard.";
-        actionDiv.innerHTML = `<a href="${vcardLink}" download>
+    if (isIOS()) {
+      msg.textContent = "Sei su iOS: clicca per aggiungere la vCard.";
+      actionDiv.innerHTML = `<a href="${vcardLink}" download>
           <button>Aggiungi ai contatti (iOS)</button>
         </a>`;
-      } else if (isAndroid()) {
-        msg.textContent = "Sei su Android: clicca per aggiungere la vCard.";
-        actionDiv.innerHTML = `<a href="${vcardLink}" download>
-          <button>Aggiungi ai contatti (Android)</button>
-        </a>`;
-      } else {
-        msg.textContent = "Sistema operativo non riconosciuto. Usa un dispositivo iOS o Android.";
-      }
-    };
-  </script>
+    } else if (isAndroid()) {
+      msg.textContent = "Sei su Android: tocca per aprire la vCard.";
+      actionDiv.innerHTML = `<a href="${vcardLink}" target="_blank">
+        <button>Apri vCard (Android)</button>
+    </a>`;
+    } else {
+      msg.textContent = "Sistema operativo non riconosciuto. Usa un dispositivo iOS o Android.";
+    }
+  };
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
