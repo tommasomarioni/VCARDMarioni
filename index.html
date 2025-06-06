@@ -13,7 +13,7 @@
       font-size: 18px;
       cursor: pointer;
     }
-    img{
+    img {
       width: 20%;
     }
   </style>
@@ -22,43 +22,26 @@
 
 <h1>Contatto: Marioni Tommaso</h1>
 <p id="msg">Caricamento ...</p>
-<img src="marioni.jpeg">
+<img src="marioni.jpeg" alt="Foto di Tommaso Marioni">
 <div id="action"></div>
 <p><a href="tommaso_marioni.vcf" download>Scarica la vCard manualmente</a></p>
 
 <script>
   window.onload = function () {
-    function isIOS() {
-      return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    }
-
-    function isAndroid() {
-      return /Android/.test(navigator.userAgent);
-    }
-
     const actionDiv = document.getElementById('action');
     const msg = document.getElementById('msg');
-
     const vcardLink = "tommaso_marioni.vcf";
 
-    if (isIOS()) {
-      msg.textContent = "Sei su iOS: clicca per aggiungere la vCard.";
-      actionDiv.innerHTML = `<a href="${vcardLink}" download>
-          <button>Aggiungi ai contatti (iOS)</button>
-        </a>`;
-    } else if (isAndroid()) {
-      msg.textContent = "Sei su Android: tocca per aprire la vCard.";
-      actionDiv.innerHTML = `<a href="${vcardLink}" target="_blank">
-        <button>Apri vCard (Android)</button>
-    </a>`;
-    } else {
-      msg.textContent = "Sistema operativo non riconosciuto. Usa un dispositivo iOS o Android.";
-    }
+    // Messaggio unificato per tutti i dispositivi
+    msg.textContent = "Tocca il pulsante per aprire la vCard e aggiungerla ai contatti.";
+
+    // Link per aprire la vCard in nuova scheda (funziona su Android e iOS)
+    actionDiv.innerHTML = `
+      <a href="${vcardLink}" target="_blank" rel="noopener noreferrer">
+        <button>Apri vCard</button>
+      </a>`;
   };
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
